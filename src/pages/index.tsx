@@ -8,7 +8,7 @@ export default function Home() {
   const { data: session } = useSession()
 
 
-  if (session) {
+  if (session && session.user) {
     return (
       <>
         Signed in as {session.user.email} <br />
