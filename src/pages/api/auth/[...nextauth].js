@@ -6,8 +6,18 @@ export const authOptions = {
     DuendeIDS6Provider({
       clientId: "bff",
       clientSecret: "secret",
+      wellKnown: 'https://localhost:6001/.well-known/openid-configuration',
       issuer: "https://localhost:6001",
-      authorization: { params: { scope: "ytc_api" } },
+      authorization: { params: { scope: "openid profile api1 ytc_api" } },
+      idToken: true,
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: null,
+        }
+      }
     })
   ]
 }

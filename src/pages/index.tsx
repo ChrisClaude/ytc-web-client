@@ -6,13 +6,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const { data: session } = useSession()
+  const handleCallToAPI = () => {
 
+  };
 
   if (session && session.user) {
+    console.log(session)
     return (
       <>
         Signed in as {session.user.email} <br />
         <button className='bg-blue-500 pt-2 px-4 rounded-sm text-center text-sm hover:cursor-pointer' onClick={() => signOut()}>Sign out</button>
+        <button
+          className='bg-blue-500 pt-2 px-4 rounded-sm text-center text-sm hover:cursor-pointer'
+          onClick={handleCallToAPI}
+        >Call API</button>
       </>
     )
   }
