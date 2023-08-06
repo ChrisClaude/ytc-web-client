@@ -41,8 +41,15 @@ export const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse<OAuthU
           sameSite: 'strict',
           path: '/'
         }))
-        // session.accessToken = token.accessToken;
-        session.user = { ...token.user };
+        let userInfoRes = await fetch(`${process.env.IDENTITY_SERVICE_ENDPOINT}/connect/userinfo`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token.accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        let userInfo = await userInfoRes.json();
+        session.user = { ...token.user, ...userInfo };
         return session;
       },
     },

@@ -31,7 +31,7 @@ export default function Home() {
 
     return (
       <>
-        Signed in as {session.user.email} <br />
+        Signed in as {session.user.name} <br />
         <button className='bg-blue-500 pt-2 px-4 rounded-sm text-center text-sm hover:cursor-pointer mr-3' onClick={() => signOut()}>Sign out</button>
         <button
           className='bg-blue-500 pt-2 px-4 rounded-sm text-center text-sm hover:cursor-pointer'
