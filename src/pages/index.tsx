@@ -31,7 +31,16 @@ export default function Home() {
 
     return (
       <>
-        Signed in as {session.user.name} <br />
+        <div>
+          Signed in as {session.user.name} <br />
+          <Image
+            src={session.user.profile_image}
+            alt='profile image'
+            width={100}
+            height={100}
+          />
+        </div>
+
         <button className='bg-blue-500 pt-2 px-4 rounded-sm text-center text-sm hover:cursor-pointer mr-3' onClick={() => signOut()}>Sign out</button>
         <button
           className='bg-blue-500 pt-2 px-4 rounded-sm text-center text-sm hover:cursor-pointer'

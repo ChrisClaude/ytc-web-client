@@ -12,10 +12,11 @@ export const nextAuthOptions = (req: NextApiRequest, res: NextApiResponse<OAuthU
         clientSecret: 'secret',
         wellKnown: 'https://localhost:6001/.well-known/openid-configuration',
         issuer: 'https://localhost:6001',
-        authorization: { params: { scope: 'openid profile api1 ytc_api' } },
+        authorization: { params: { scope: 'openid profile api1 ytc_api avatar' } },
         idToken: true,
-        profile(profile) {
+        profile(profile, tokens) {
           return {
+            // TODO: Look at this again and how it affects the session user object.
             id: profile.sub,
             name: profile.name,
             email: profile.email,
